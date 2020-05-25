@@ -1,0 +1,14 @@
+# IntelliJ
+out/
+.idea/
+
+# Gradle generated resources
+build/
+.gradle/
+classes/
+gradlew.bat
+gradlew
+gradle
+
+# Healthcare checkstyle, so we force to always download the latest version
+checkstyle.xml

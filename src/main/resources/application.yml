@@ -1,0 +1,18 @@
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org.hibernate: ERROR
+# The following configurations must be removed when using this boilerplate with your service
+# as they are only added for testing purposes
+# add them to their appropiate env config file so they can be served via the configuration server
+raygun:
+  apikey: ""
+oldtracking:
+  kinesis:
+    streamName: "hc-stg-v2-tracking-stream"
+    partitionKey: "hc"
+tracking:
+  kinesis:
+    streamName: "hc-stg-v2-new-tracking-stream"
+    partitionKey: "hc"
