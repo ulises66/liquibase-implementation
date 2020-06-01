@@ -8,6 +8,9 @@ buildscript {
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
         classpath 'de.undercouch:gradle-download-task:3.1.2'
+        classpath 'org.liquibase:liquibase-core:3.4.1'
+        classpath "org.liquibase:liquibase-gradle-plugin:1.1.1"
+        classpath 'mysql:mysql-connector-java:5.1.13'
     }
 }
 
@@ -15,11 +18,33 @@ apply plugin: 'java'
 apply plugin: 'checkstyle'
 apply plugin: "de.undercouch.download"
 apply plugin: 'org.springframework.boot'
+apply plugin: "liquibase"
 
 jar {
     baseName = 'core-database'
     version = '0.0.1'
 }
+
+
+def changeLog = "$projectDir/src/main/resources/db/changelog/db.changelog-master.xml"
+
+task('dev') << {
+    println "executing dev"
+    liquibase {
+        activities {
+            main {
+                changeLogFile changeLog
+                url 'jdbc:mysql://localhost:3306/company'
+                username 'root'
+                password ''
+            }
+        }
+    }
+}
+
+
+
+
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -41,7 +66,6 @@ repositories {
 /*
  * Custom tasks definition
  */
-
 task checkCheckstyleExists {
     doLast {
         def file = new File("$checkstyleFilePath")
@@ -67,8 +91,8 @@ dependencies {
     compile("org.springframework.cloud:spring-cloud-starter-config")
     // end Config
     // JPA
-    //compile('org.springframework.boot:spring-boot-starter-data-jpa')
-    //runtime('mysql:mysql-connector-java')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    runtime('mysql:mysql-connector-java')
     // end JPA
     // Web
     compile("org.springframework.boot:spring-boot-starter-web") {

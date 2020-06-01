@@ -4,7 +4,6 @@ package com.healthcare.core.database.web.controllers;
 //import com.healthcare.lib.tracking.service.IOldTrackingClient;
 //import com.healthcare.lib.tracking.service.ITrackingClient;
 import com.healthcare.core.database.domain.HelloWorld;
-//import com.healthcare.product.service.domain.HelloWorldEvent;
 //import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
