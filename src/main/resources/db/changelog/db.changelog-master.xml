@@ -4,5 +4,13 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
-    <include file="changes/script1.sql" relativeToChangelogFile="true"/>
+
+    <changeSet id="1" author="uaguilar">
+        <sqlFile dbms="mysql" relativeToChangelogFile="true" path="changes/script1.sql" />
+    </changeSet>
+
+    <changeSet id="2" author="uaguilar">
+        <sqlFile dbms="mysql" relativeToChangelogFile="true" path="changes/script2.sql" />
+    </changeSet>
+
 </databaseChangeLog>
