@@ -34,7 +34,7 @@ task('dev') << {
         activities {
             main {
                 changeLogFile changeLog
-                url 'jdbc:mysql://localhost:3306/company'
+                url 'jdbc:mysql://localhost:3306/demo'
                 username 'root'
                 password ''
             }
